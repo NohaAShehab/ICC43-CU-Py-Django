@@ -41,8 +41,19 @@ def get_specific_student(request, index):
 
 def students_index(request):
     # send students list to the template
+    students = [
+        {"id":1, 'name':"Ahmed", 'image':'pic1.png'},
+        {"id": 2, 'name': "test", 'image': 'pic2.png'},
+        {"id": 3, 'name': "Ali", 'image': 'pic3.png'},
+        {"id": 4, 'name': "abc", 'image': 'pic4.png'}
+
+
+    ]
     return render(request, 'students/index.html', context={"students": students})
 
+
+def static_files(request):
+    return  render(request, 'students/static.html')
 
 
 

@@ -1,0 +1,15 @@
+
+
+body{
+    font-family: "Courier 10 Pitch";
+    font-style: italic;
+    /*background-color: bisque;*/
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}

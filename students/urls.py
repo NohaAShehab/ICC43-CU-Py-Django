@@ -17,12 +17,13 @@ Including another URLconf
 
 from django.urls import path
 from students.views import sayhello, sayHi, student_profile, students_list,\
-    get_specific_student, students_index
+    get_specific_student, students_index, static_files
 urlpatterns = [
     path('hello', sayhello, name='hello'),
     path("hi", sayHi, name='hi'),
     path("profile/<name>",student_profile, name='student.profile' ),
     path('students', students_list, name='students'),
     path('students/<int:index>',get_specific_student, name='student.profile' ),
-    path('index',students_index, name='students.index' )
+    path('index',students_index, name='students.index' ),
+    path('static', static_files,name='students.static')
 ]

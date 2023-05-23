@@ -1,0 +1,30 @@
+
+
+***Serving static files***
+serve images, css , js files
+You restart the server
+
+add directory inside you application --> with name static
+
+
+create user in mysql
+create user 'pycu43'@'localhost' identified by 'Iti123456789_';
+create database pycu43;
+grant all privileges on *.* to 'pycu43'@'localhost';
+
+--->
+mysql -u pycu43 -p
+
+
+---> connect to database from terminal
+
+
+----> create your first model
+https://docs.djangoproject.com/en/4.2/topics/db/models/
+
+
+
+
+
+
+----> connect from django django to mysql ?
