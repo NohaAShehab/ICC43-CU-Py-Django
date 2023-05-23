@@ -52,7 +52,8 @@ def students_index(request):
     #     {"id": 3, 'name': "Ali", 'image': 'pic3.png'},
     #     {"id": 4, 'name': "abc", 'image': 'pic4.png'}
     # ]
-    students = Student.objects.all()
+    # students = Student.objects.all()
+    students = Student.get_all_object()
 
     for std in students:
         print(f"{std}, {type(std)}")
@@ -76,11 +77,11 @@ def show_student(request,id):
 def delete_student(request, id):
     student = get_object_or_404(Student, id=id)
     student.delete()
-    # return HttpResponse("Student deleted successfully ")
-    index_url = reverse('students.index')
-    # return  redirect('/students/index')
+    # return HttpResponse("Student deleted successfully ",status=205)
+    # index_url = reverse('students.index')
+    # # return  redirect('/students/index')
     return redirect(index_url)
-    # return  students_index(request)
+    return  students_index(request)
 
 
 

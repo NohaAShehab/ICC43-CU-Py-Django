@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 # Create your models here.
 
@@ -15,3 +16,21 @@ class Student(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+    def get_show_url(self):
+        return reverse('students.show',args=[self.id])
+
+    @property
+    def show_url(self):
+        print(self, self.id, self.name)
+        return reverse('students.show', args=[self.id])
+
+
+    @property
+    def delete_url(self):
+        return reverse('students.delete', args=[self.id])
+
+    @classmethod
+    def get_all_object(cls):
+        return cls.objects.all()

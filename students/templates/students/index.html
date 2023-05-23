@@ -16,8 +16,12 @@
             <td> {{student.name}}</td>
                 <td><img src="{% static 'students/images/'|add:student.image %}" width="100" height="100"> </td>
                 <td> {{student.age}}</td>
-                <td><a href="{% url 'students.show' student.id %}" class="btn btn-info"> Show</a> </td>
-                <td><a href="{% url 'students.delete' student.id %}" class="btn btn-danger"> Delete</a> </td>
+<!--                <td><a href="{% url 'students.show' student.id %}" class="btn btn-info"> Show</a> </td>-->
+                <td><a href="{{student.show_url}}" class="btn btn-info"> Show</a> </td>
+
+<!--                <td><a href="{% url 'students.delete' student.id %}" class="btn btn-danger"> Delete</a> </td>-->
+                <td><a href="{{student.delete_url}}" class="btn btn-danger"> Delete</a> </td>
+
             </tr>
         {% endfor %}
     </table>
