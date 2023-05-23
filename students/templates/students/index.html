@@ -1,18 +1,23 @@
 {% extends 'students/base.html' %}
 {% load static %}
 {% block 'body' %}
-    <h1 style="color: darkmagenta"> All students </h1>
+<!--    <h1 style="color: darkmagenta"> All students </h1>-->
+<!--<h2> {{students}}</h2>-->
      <link rel="stylesheet" href="{% static 'students/css/style.css' %}">
 
     <table class="table">
         <tr>
-            <td>ID</td> <td>Name</td> <td> Image </td>
+            <td>ID</td> <td>Name</td> <td> Image </td> <td> Age</td>
+            <td> Show</td>
+            <td> Delete</td>
         </tr>
         {% for student in students %}
             <tr> <td> {{student.id}}</td>
             <td> {{student.name}}</td>
-<!--                <td> {{student.image}}</td>-->
                 <td><img src="{% static 'students/images/'|add:student.image %}" width="100" height="100"> </td>
+                <td> {{student.age}}</td>
+                <td><a href="{% url 'students.show' student.id %}" class="btn btn-info"> Show</a> </td>
+                <td><a href="{% url 'students.delete' student.id %}" class="btn btn-danger"> Delete</a> </td>
             </tr>
         {% endfor %}
     </table>

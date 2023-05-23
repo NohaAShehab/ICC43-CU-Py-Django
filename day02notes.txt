@@ -24,7 +24,97 @@ https://docs.djangoproject.com/en/4.2/topics/db/models/
 
 
 
-
-
-
 ----> connect from django django to mysql ?
+
+
+----------------------> use admin panel ---------------------------
+python manage.py createsuperuser
+
+## add student model to the admin panel
+
+######################## steps ##########################
+1- set connection credits
+open settings.py --->
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME":"pycu43",
+        "USER" : "pycu43",
+        "PASSWORD": "Iti123456789_",
+        "HOST" : "localhost",
+        "PORT" : "3306"
+
+    }
+}
+then pip install mysqlclient
+
+---------------------------->
+python mange.py makemigrations
+
+---> to apply migrations content to the database
+python manage.py migrate
+
+------------------------------ to write table structure --> on models.py
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=200)
+    age = models.IntegerField()
+    image = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+---> to apply changes to the database >
+python mange.py makemigrations
+
+---> to apply migrations content to the database
+python manage.py migrate
+
+---------------> to add application to the admin panel
+---1- create superuser for your admin panel
+python manage.py createsuperuser
+
+2-add the application to the admin panel
+    go to admin.py in the application
+    then import model
+    admin.site.register(Student)
+
+--------------> check this
+
+
+
+
+=---> constaints on columns
+by default when create table using sql query in mysql
+
+default values for all columns is null unless you say something else
+========================
+
+constraint null---> if column value is null will you accept this ?
+
+
+===================
+auto_now_add ===> get current time when you run insert command
+auto_now --> get current time when you run insert/ update command
+
+====================================How the model interact with the database table ========
+
+django --> shell
+python manage.py shell
+pip install ipython
+###########3 model provide sql apis 000> making queries
+https://docs.djangoproject.com/en/4.2/topics/db/queries/
+https://docs.djangoproject.com/en/4.2/topics/db/queries/
+select * from students_student;
+
+from students.models Import Student;
+
+Student.objects.all(); ## select * from students_student;
+
+
+
+
+
+
+
+
+

@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.urls import path
 from students.views import sayhello, sayHi, student_profile, students_list,\
-    get_specific_student, students_index, static_files
+    get_specific_student, students_index, static_files, show_student, delete_student
 urlpatterns = [
     path('hello', sayhello, name='hello'),
     path("hi", sayHi, name='hi'),
@@ -25,5 +25,7 @@ urlpatterns = [
     path('students', students_list, name='students'),
     path('students/<int:index>',get_specific_student, name='student.profile' ),
     path('index',students_index, name='students.index' ),
-    path('static', static_files,name='students.static')
+    path('static', static_files,name='students.static'),
+    path("<int:id>", show_student, name='students.show'),
+    path("delete/<int:id>", delete_student,name='students.delete' )
 ]
