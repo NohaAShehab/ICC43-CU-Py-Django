@@ -9,7 +9,8 @@ class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=200, null=True, blank=True)
     age = models.IntegerField( default=10)
-    image = models.CharField(max_length=100, null=True, blank=True)
+    # image = models.CharField(max_length=100, null=True, blank=True)
+    image = models.ImageField(upload_to='students/images', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
@@ -34,3 +35,9 @@ class Student(models.Model):
     @classmethod
     def get_all_object(cls):
         return cls.objects.all()
+
+
+
+    @property
+    def image_url(self):
+        return  f"/media/{self.image}"

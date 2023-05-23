@@ -113,6 +113,37 @@ Student.objects.all(); ## select * from students_student;
 
 
 
+################## upload image
+
+1- modify model ---> image- >> image field
+
+2- install python -m pip install Pillow
+
+
+---> define media url
+---> define media root
+
+
+to delete files automatically
+https://pypi.org/project/django-cleanup/
+
+
+
+-----------------------Lab specs--------------------------
+
+
+1- connect application to mysql
+2- run makemigrations, migrate
+3- create model for your products
+    product name, price , description , image(image field), instock(bool), created_at, updated_at
+4- display all products from database
+5- add show , delete buttons
+
+
+
+
+
+
 
 
 

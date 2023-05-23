@@ -78,10 +78,10 @@ def delete_student(request, id):
     student = get_object_or_404(Student, id=id)
     student.delete()
     # return HttpResponse("Student deleted successfully ",status=205)
-    # index_url = reverse('students.index')
+    index_url = reverse('students.index')
     # # return  redirect('/students/index')
     return redirect(index_url)
-    return  students_index(request)
+    # return  students_index(request)
 
 
 
