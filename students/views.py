@@ -79,10 +79,31 @@ def delete_student(request, id):
     student.delete()
     # return HttpResponse("Student deleted successfully ",status=205)
     index_url = reverse('students.index')
-    # # return  redirect('/students/index')
+    # return  redirect('/students/index')
     return redirect(index_url)
     # return  students_index(request)
+    # return students_index(request)
 
+
+
+def create_student(request):
+    # return HttpResponse("Add new student")
+    # print(request)
+    if request.method =="POST":
+        print(request.FILES)
+        # print(request.POST) # data sent by the request
+        # print( request.POST['image'], type( request.POST['image']))
+        student = Student()
+        student.name = request.POST['name']
+        student.age = request.POST['age']
+        student.email = request.POST['email']
+        student.image = request.FILES['image']  # handle upload image
+        student.save()
+
+        return HttpResponse("POST request received")
+
+
+    return render(request, 'students/create.html')
 
 
 
