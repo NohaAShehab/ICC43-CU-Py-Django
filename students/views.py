@@ -90,17 +90,24 @@ def create_student(request):
     # return HttpResponse("Add new student")
     # print(request)
     if request.method =="POST":
-        print(request.FILES)
-        # print(request.POST) # data sent by the request
-        # print( request.POST['image'], type( request.POST['image']))
-        student = Student()
-        student.name = request.POST['name']
-        student.age = request.POST['age']
-        student.email = request.POST['email']
-        student.image = request.FILES['image']  # handle upload image
-        student.save()
-
-        return HttpResponse("POST request received")
+        # print(request.FILES)
+        # # print(request.POST) # data sent by the request
+        # # print( request.POST['image'], type( request.POST['image']))
+        # student = Student()
+        # student.name = request.POST['name']
+        # student.age = request.POST['age']
+        # student.email = request.POST['email']
+        # student.image = request.FILES['image']  # handle upload image
+        # student.save()
+        #
+        # # return HttpResponse("POST request received")
+        # # all_students_url = reverse('students.index')
+        # # return  redirect(all_students_url)
+        ### second way
+        student = Student.objects.create(name=request.POST['name'],
+            age=request.POST["age"], email=request.POST["email"],
+        image=request.FILES['image'])
+        return redirect(student.show_url)
 
 
     return render(request, 'students/create.html')
