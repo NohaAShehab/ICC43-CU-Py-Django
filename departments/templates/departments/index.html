@@ -1,0 +1,14 @@
+{% extends 'students/base.html' %}
+
+{% block 'body' %}
+    <table class="table">
+      <tr> <th >ID </th>  <th>Name </th> <th> Show</th> </tr>
+      {% for dept in departments %}
+        <tr>
+            <td>{{dept.id}}</td>
+          <td>{{dept.name}}</td>
+          <td> <a class="btn btn-info" href="{{dept.show_url}}"> Show</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+{% endblock %}

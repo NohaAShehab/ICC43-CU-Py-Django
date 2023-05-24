@@ -16,9 +16,21 @@
     <label  class="form-label">Age </label>
     <input type="number"  name='age' class="form-control" >
   </div>
-        <div class="mb-3">
+<div class="mb-3">
     <label  class="form-label">Image </label>
     <input type="file" name="image" class="form-control" >
+  </div>
+<div class="mb-3">
+    <label  class="form-label">Departments </label>
+   <select class="form-select" aria-label="Default select example" name="dept_id">
+      <option selected disabled>Open this select menu</option>
+               <option value="100">abcccc</option>
+
+       {% for dept in departments %}
+        <option value="{{dept.id}}">{{dept.name}}</option>
+       {% endfor %}
+
+</select>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

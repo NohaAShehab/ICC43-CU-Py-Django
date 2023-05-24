@@ -1,0 +1,10 @@
+{% extends 'students/base.html' %}
+
+{% block 'body' %}
+<h1> {{department.name}} </h1>
+    <h3> Students in this department </h3>
+    {% for std in department.students.all %}
+        <li>  <a href="{{std.show_url}}" > {{std.name}} </a></li>
+        {% endfor %}
+
+{% endblock %}

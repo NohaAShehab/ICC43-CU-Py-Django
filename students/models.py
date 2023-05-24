@@ -1,6 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
-
+from departments.models import Department
 # Create your models here.
 
 ## python classes --> You must extend from models.Model
@@ -13,10 +13,14 @@ class Student(models.Model):
     image = models.ImageField(upload_to='students/images', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
+    dept = models.ForeignKey(Department, on_delete=models.CASCADE, null=True,
+                             blank=True, related_name='students')
 
 
     def __str__(self):
         return f'{self.name}'
+
+
 
 
     def get_show_url(self):

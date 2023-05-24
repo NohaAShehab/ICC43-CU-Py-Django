@@ -5,3 +5,21 @@
 
 ## form ---> submit data ?
 
+################ link student model , with department model
+
+student may study at only one department
+
+department ==> has many students ((one to many))
+
+---> business ---> departments, courses. students ---> and ? ---> create in different applications
+
+select * from students where id=1 limit 1;
+Student.object.filter(id=1).first()
+
+select * from students where dept_id = given_dept_id?
+
+dept = models.ForeignKey(Department, on_delete=models.CASCADE, null=True,
+                             blank=True, related_name='students')
+
+
+student.dept.students.all = ==> backword relation

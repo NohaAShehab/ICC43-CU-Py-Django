@@ -23,14 +23,9 @@ from students.views import sayhello, sayHi, student_profile, students_list,get_s
 from courses.views import get_all_courses
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('hello', sayhello, name='hello'),
-    # path("hi", sayHi, name='hi'),
-    # path("profile/<name>",student_profile, name='student.profile' ),
-    # path('students', students_list, name='students'),
-    # path('students/<int:index>',get_specific_student, name='student.profile' ),
-    # path('courses',get_all_courses, name='courses' ),
     path('students/', include('students.urls')),
-    path('lectures/', include('courses.urls'))
+    path('lectures/', include('courses.urls')),
+    path('department/', include('departments.urls'))
 ]+static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
 #

@@ -4,7 +4,7 @@ from  django.http import  HttpResponse
 
 ### developer imports
 from students.models import Student
-
+from departments.models import  Department
 # Create your views here.
 
 
@@ -45,14 +45,6 @@ def get_specific_student(request, index):
 
 
 def students_index(request):
-    # send students list to the template
-    # students = [
-    #     {"id":1, 'name':"Ahmed", 'image':'pic1.png'},
-    #     {"id": 2, 'name': "test", 'image': 'pic2.png'},
-    #     {"id": 3, 'name': "Ali", 'image': 'pic3.png'},
-    #     {"id": 4, 'name': "abc", 'image': 'pic4.png'}
-    # ]
-    # students = Student.objects.all()
     students = Student.get_all_object()
 
     for std in students:
@@ -104,13 +96,26 @@ def create_student(request):
         # # all_students_url = reverse('students.index')
         # # return  redirect(all_students_url)
         ### second way
-        student = Student.objects.create(name=request.POST['name'],
-            age=request.POST["age"], email=request.POST["email"],
-        image=request.FILES['image'])
+        # --> you must send deptartment object
+        # print(f"department ===> {request.POST['dept_id']}")
+        if 'dept_id' in request.POST:  # 100?
+            dept =Department.get_department(request.POST['dept_id'])
+        else:
+            dept =None
+
+
+        if request.FILES:
+            student = Student.objects.create(name=request.POST['name'],
+                age=request.POST["age"], email=request.POST["email"],
+                image=request.FILES['image'],
+                dept = dept)  # dept must be sent as a department object
+        else:
+            student = Student.objects.create(name=request.POST['name'],
+            age=request.POST["age"], email=request.POST["email"], dept = dept)
         return redirect(student.show_url)
 
-
-    return render(request, 'students/create.html')
+    departments = Department.get_all_objects()
+    return render(request, 'students/create.html', context={'departments':departments})
 
 
 

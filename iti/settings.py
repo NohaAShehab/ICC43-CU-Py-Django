@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # you must tell the project that you have added new application
-
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
     'django_cleanup.apps.CleanupConfig',
+    'departments.apps.DepartmentsConfig'
 
 ]
 
